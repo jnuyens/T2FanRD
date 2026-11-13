@@ -1,5 +1,11 @@
 # T2FanRD
 
+> **About this fork.** This is [GnomedDev/T2FanRD](https://github.com/GnomedDev/T2FanRD) master
+> plus two changes waiting for upstream review, tested on a Mac Pro 2019 (MacPro7,1):
+> [PR #19](https://github.com/GnomedDev/T2FanRD/pull/19) (find the GPU sensor on any DRM card, keep
+> running when it disappears) and optional extra temperature sensors such as NVMe drives (see
+> "Extra temperature sensors" below). Once both are merged upstream, use upstream again.
+
 Simple Fan Daemon for T2 Macs, rewritten from the [original Python version](https://github.com/NoaHimesaka1873/t2fand).
 
 ## Compilation
