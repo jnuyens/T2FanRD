@@ -56,12 +56,15 @@ impl FanController {
     }
 
     pub fn set_manual(&self, enabled: bool) -> Result<()> {
-        self.manual_file
-            .as_ref()
-            .map_or(Ok(()), |mut p| {
-                (&mut p).write_all(if enabled { b"1" } else { b"0" })
-            })
-            .map_err(Error::FanWrite)
+        match self.manual_file.as_ref() {
+            Some(mut p) => (&mut p).write_all(if enabled { b"1" } else { b"0" }),
+            // hwmon fans (macsmc_hwmon) have no _manual file: a speed write switches
+            // the fan to manual, and writing 0 to fan*_target hands it back to the SMC.
+            // Without this a stopped daemon leaves the fans stuck at their last speed.
+            None if !enabled => write!(&self.output_file, "0"),
+            None => Ok(()),
+        }
+        .map_err(Error::FanWrite)
     }
 
     pub fn set_speed(&self, mut speed: u32) -> Result<()> {
