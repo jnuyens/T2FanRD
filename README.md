@@ -1,5 +1,7 @@
 # T2FanRD
 
+> **Archived upstream (2026-11-16).** On kernel 7.3 and later, T2 Macs use `macsmc_hwmon`, so use a standard fan daemon such as [fan2go](https://github.com/markusressel/fan2go); see [the Mac Pro 2019 Proxmox thread](https://www.reddit.com/r/ProxmoxVE/comments/1xwe779/mac_pro_2019_with_proxmox_and_patched_fan_control/). These branches only matter for kernels up to 7.2.
+
 > **About this fork.** This is [GnomedDev/T2FanRD](https://github.com/GnomedDev/T2FanRD) master
 > plus two changes waiting for upstream review, tested on a Mac Pro 2019 (MacPro7,1):
 > [PR #19](https://github.com/GnomedDev/T2FanRD/pull/19) (find the GPU sensor on any DRM card, keep
